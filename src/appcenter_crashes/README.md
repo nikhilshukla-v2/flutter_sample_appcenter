@@ -1,7 +1,4 @@
-# New maintainer wanted : since I don't use this service anymore this plugin is very low on my priority list. If anyone is interested in becoming the owner and going further I would be happy to give him/her ownership ! Sorry
-
-
-# Visual Studio App Center Plugin for Flutter
+# Visual Studio App Center (Crash) Plugin for Flutter
 
 [![pub package](https://img.shields.io/pub/v/appcenter.svg)](https://pub.dartlang.org/packages/appcenter) 
 
@@ -17,8 +14,7 @@ To use this plugin:
 1. From the index page, select `Add new` and create a new **iOS application (Platform: Objective-C/Swift)**, and keep your iOS app secret (ex: `123cfac9-123b-123a-123f-123273416a48`).
 1. From the index page, select `Add new` and create a new **Android application (Platform: Java)**, and keep your Android app secret (ex: `321cfac9-123b-123a-123f-123273416a48`).
 1. Add those as [dependencies in your pubspec.yaml file](https://flutter.io/platform-plugins/):
-	* `appcenter` 
-	* `appcenter_analytics`
+	* `appcenter`
 	* `appcenter_crashes`
 
 ## Usage
@@ -27,34 +23,22 @@ To use this plugin:
 
 ```dart
 import 'package:appcenter/appcenter.dart';
-import 'package:appcenter_analytics/appcenter_analytics.dart';
 import 'package:appcenter_crashes/appcenter_crashes.dart';
 ```
 
-#### Starting services
+#### Starting service
 
 ```dart
 final ios = defaultTargetPlatform == TargetPlatform.iOS;
 var app_secret = ios ? "123cfac9-123b-123a-123f-123273416a48" : "321cfac9-123b-123a-123f-123273416a48";
 
-await AppCenter.start(app_secret, [AppCenterAnalytics.id, AppCenterCrashes.id]);
+await AppCenter.start(app_secret, [AppCenterCrashes.id]);
 ```
 
-#### Enabling or disabling services
+#### Enabling or disabling service
 
 ```dart
-await AppCenter.setEnabled(false); // global 
-await AppCenterAnalytics.setEnabled(false); // just a service
 await AppCenterCrashes.setEnabled(false); // just a service
-```
-
-### Analytics
-
-#### Track events
-
-```dart
-AppCenterAnalytics.trackEvent("map"); 
-AppCenterAnalytics.trackEvent("casino", { "dollars" : "10" }); // with custom properties
 ```
 
 ## Getting Started
